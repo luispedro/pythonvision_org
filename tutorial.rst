@@ -2,10 +2,11 @@
 Python Image Tutorial
 =======================
 
-Introduction
-~~~~~~~~~~~~
 
 More than a HOWTO, this document is a HOW-DO-I use Python to do my image processing tasks. Image processing means many things to many people, so I will use a couple of examples from my research to illustrate.
+
+Introduction
+~~~~~~~~~~~~
 
 Basic Software
 ---------------
@@ -26,4 +27,24 @@ You will need one of the following packages:
     - Python Image Library
     - readmagick
 
+You should also download and install pymorph.
+
+First Task: Counting Nuclei
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Our first task will be to take this image and count the number of nuclei:
+
+.. image:: images/dna.jpeg
+   :width: 25%
+   :align: center
+
+Before we start, let us import the needed files. For all code examples in this tutorial, I am going to assume that you typed the following before coming to the example:
+
+::
+
+    import numpy as np
+    import pylab
+    import pymorph
+    import readmagick
+    from scipy import ndimage
 
