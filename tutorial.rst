@@ -34,7 +34,7 @@ First Task: Counting Nuclei
 
 Our first task will be to take this image and count the number of nuclei:
 
-.. image:: images/dna.jpeg
+.. image:: static/images/dna.jpeg
    :width: 25%
    :align: center
 
