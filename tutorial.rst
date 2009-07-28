@@ -40,7 +40,7 @@ Our first task will be to take this image and count the number of nuclei:
 
 Before we start, let us import the needed files. For all code examples in this tutorial, I am going to assume that you typed the following before coming to the example:
 
-::
+.. code-block:: python
 
     import numpy as np
     import pylab
