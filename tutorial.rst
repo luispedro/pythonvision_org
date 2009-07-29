@@ -32,11 +32,12 @@ You should also download and install pymorph.
 First Task: Counting Nuclei
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our first task will be to take this image and count the number of nuclei:
+Our first task will be to take this image and count the number of nuclei (you can click on the image and download it to try this at home):
 
 .. image:: static/images/dna.jpeg
    :width: 25%
    :align: center
+   :target: _static/images/dna.jpeg
 
 Before we start, let us import the needed files. For all code examples in this tutorial, I am going to assume that you typed the following before coming to the example:
 
