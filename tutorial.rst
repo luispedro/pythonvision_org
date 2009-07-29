@@ -49,6 +49,8 @@ Before we start, let us import the needed files. For all code examples in this t
     import readmagick
     from scipy import ndimage
 
+These are the packages listed above (except *pylab* is a part of matplotlib).
+
 In Python, there is image processing tools spread across many packages instead of a single package. Fortunately, they all work on the same data representation, the numpy array [#]_. A numpy array is, in our case, either a two dimensional array of integers (height x width) or, for colour images, a three dimensional array (height x width x 3 or height x width x 4, with the last dimension storing (red,green,blue) triplets or (red,green,blue,alpha) if you are considering transparency).
 
 The first step is to get the image from disk into a memory array:
@@ -128,11 +130,11 @@ Some Actual Work
 
 Here's the first idea for counting the nuclei. We are going to threshold the image and count the number of objects.
 
-# FIXME: OTSU IS NOT A PART OF ANY PACKAGE!!!
 
 .. code-block:: python
 
-    T = otsu(dna)
+    import pyslic
+    T = pyslic.thresholding.otsu(dna)
     pylab.imshow(dna > T)
     pylab.show()
 
@@ -147,18 +149,19 @@ This isn't too good. The image contains many small objects. There are a couple o
 
 .. code-block:: python
 
+   import pyslic
    dnaf = ndimage.gaussian_filter(dna, 8)
-   T = otsu(dnaf)
+   T = pyslic.thresholding.otsu(dnaf)
    pylab.imshow(dnaf > T)
    pylab.show()
 
-The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *FIXME* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
+The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *pyslic* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
 
 .. image:: static/images/dnaf-otsu.jpeg
    :width: 25%
    :align: center
 
-We now have some merged nuclei (that were previously touching), but overall the result looks much better. The final count is only one extra function call away:
+We now have some merged nuclei (those that are touching), but overall the result looks much better. The final count is only one extra function call away:
 
 .. code-block:: python
 
@@ -176,6 +179,45 @@ We now have the number of objects in the image (*18*), and we also displayed the
    :align: center
 
 We can explore the *labeled* object. It is an integer array of exactly the same size as the image that was given to *ndimage.label()*. It's value is the label of the object at that position, so that values range from 0 (the background) to *nr_objects*.
+
+
+Learn More
+~~~~~~~~~~
+
+You can explore the documentation for numpy at `docs.numpy.org`_. You will find documentation for scipy at the same location. For pymorph, you can look at its `original documentation`_.
+
+.. _`docs.numpy.org`: http://docs.numpy.org/
+.. _`original documentation`: http://www.mmorph.com/pymorph/
+
+However, Python has a really good online documentation system. You can invoke it with ``help(name)`` or, if you are using *ipython* just by typing a question mark after the name of the function you are interested in. For example, if you want details on the *pymorph.regmax* function:
+
+::
+
+  In [10]: pymorph.regmax?
+  Type:           function
+  Base Class:     <type 'function'>
+  String Form:    <function regmax at 0xa0495a4>
+  Namespace:      Interactive
+  File:           /usr/local/lib/python2.6/dist-packages/pymorph-0.91-py2.6.egg/pymorph/mmorph.py
+  Definition:     pymorph.regmax(f, Bc=None)
+  Docstring:
+      - Purpose
+          Regional Maximum.
+      - Synopsis
+          y = regmax(f, Bc=None)
+      - Input
+          f:  Gray-scale (uint8 or uint16) image.
+          Bc: Structuring Element Default: None (3x3 elementary cross).
+              (connectivity).
+      - Output
+          y: Binary image.
+      - Description
+          regmax creates a binary image y by computing the regional
+          maxima of f , according to the connectivity defined by the
+          structuring element Bc . A regional maximum is a flat zone not
+          surrounded by flat zones of higher gray values.
+
+All the projects listed above have very complete documentation.
 
 Footnotes
 ~~~~~~~~~
