@@ -181,6 +181,156 @@ We now have the number of objects in the image (*18*), and we also displayed the
 
 We can explore the *labeled* object. It is an integer array of exactly the same size as the image that was given to *ndimage.label()*. It's value is the label of the object at that position, so that values range from 0 (the background) to *nr_objects*.
 
+Second Task: Segmenting the Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The previous result was acceptable for a first pass, but there were still nuclei glued together. Let's try to do better.
+
+Here is a simple, traditional, idea:
+
+    # smooth the image
+    # find regional maxima
+    # Use the regional maxima as seeds for watershed
+
+Finding the seeds
+-----------------
+
+Here's our first try:
+
+.. code-block:: python
+
+   dnaf = ndimage.gaussian_filter(dna, 8)
+   rmax = pymorph.regmax(dnaf)
+   pylab.imshow(pymorph.overlay(dna, rmax))
+
+The ``pymorph.overlay()`` returns a colour image with the grey level component being given by its first argument while overlay its second argument. The result doesn't look so good:
+
+.. image:: static/images/dnaf-rmax-overlay.jpeg
+   :width: 25%
+   :align: center
+
+If we look at the filtered image, we can see the multiple maxima:
+
+.. image:: static/images/dnaf-8.jpeg
+   :width: 25%
+   :align: center
+
+After a little fiddling around, we decide to try the same idea with a bigger sigma value:
+
+.. code-block:: python
+
+   dnaf = ndimage.gaussian_filter(dna, 16)
+   rmax = pymorph.regmax(dnaf)
+   pylab.imshow(pymorph.overlay(dna, rmax))
+
+Now things look much better.
+
+.. image:: static/images/dnaf-16-rmax-overlay.jpeg
+   :width: 25%
+   :align: center
+
+We can easily count the number of nuclei now:
+
+.. code-block:: python
+
+   seeds,nr_nuclei = ndimage.label(rmax)
+   print nr_nuclei
+
+Which now prints ``22``.
+
+Watershed
+---------
+
+We are going to apply watershed to the distance transform of the thresholded image:
+
+.. code-block:: python
+
+   T = pyslic.thresholding.otsu(dnaf)
+   dist = ndimage.distance_transform_edt(dnaf > T)
+   dist = dist.max() - dist
+   dist = ((dist - dist.min())/float(dist.ptp())*255).astype(np.uint8)
+   pylab.imshow(dist)
+   pylab.show()
+
+
+.. image:: static/images/dnaf-16-dist.jpeg
+   :width: 25%
+   :align: center
+
+We can now call ``pymorph.cwatershed`` to get the final result:
+
+.. code-block:: python
+
+   nuclei = pymorph.cwatershed(dist, seeds)
+   pylab.imshow(nuclei)
+   pylab.show()
+
+.. image:: static/images/nuclei-segmented.png
+   :width: 25%
+   :align: center
+
+It's easy to extend this segmentation to the whole plane by using generalised Voronoi (i.e., each pixel gets assigned to its nearest nucleus):
+
+.. code-block:: python
+
+   import pyslic
+   whole = pyslic.segmentation.gvoronoi(nuclei)
+   pylab.imshow(whole)
+   pylab.show()
+
+.. image:: static/images/whole-segmented.png
+   :width: 25%
+   :align: center
+
+Often, we want to provide a little quality control and remove those cells whose nucleus touches the border. So, let's do that:
+
+.. code-block:: python
+
+   borders = np.zeros(nuclei.shape, np.bool)
+   borders[ 0,:] = 1
+   borders[-1,:] = 1
+   borders[:, 0] = 1
+   borders[:,-1] = 1
+   at_border = np.unique(nuclei[borders])
+   for obj in at_border:
+       whole[whole == obj] = 0
+   pylab.imshow(whole)
+   pylab.show()
+
+This is a bit more advanced, so let's go line by line:
+
+.. code-block:: python
+
+   borders = np.zeros(nuclei.shape, np.bool)
+
+This builds an array of zeros, with the same shape as nuclei and of type ``np.bool``.
+
+.. code-block:: python
+
+   borders[ 0,:] = 1
+   borders[-1,:] = 1
+   borders[:, 0] = 1
+   borders[:,-1] = 1
+
+This sets the borders of that array to ``True`` (``1`` is often synonimous with ``True``).
+
+.. code-block:: python
+
+   at_border = np.unique(nuclei[borders])
+
+``nuclei[borders]`` gets the values that the nuclei array has where ``borders`` is ``True`` (i.e., the value at the borders), then ``np.unique`` returns only the unique values (in our case, it returns ``array([ 0,  1,  2,  3,  4,  6,  8, 13, 20, 21, 22])``).
+
+.. code-block:: python
+
+   for obj in at_border:
+       whole[whole == obj] = 0
+
+Now we iterate over the border objects and everywhere that ``whole`` takes that value, we set it to zero [#]_. We now get our final result:
+
+.. image:: static/images/whole-segmented-filtered.png
+   :width: 25%
+   :align: center
+
 
 Learn More
 ~~~~~~~~~~
@@ -232,3 +382,4 @@ Footnotes
 
 .. [#] If you are not too familiar with Python, you might not be confortable with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is not always clear what 3 divided by 2 should be. The *integer division* answer is that it's 1 (with remainder 1), while the *floating-point division* answer is that it is 1.5. In Python, the *//* operator always gives you the integer division, while */* used to give you integer division and now gives you the floating-point one.
 
+.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``.
