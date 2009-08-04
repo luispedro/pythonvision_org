@@ -368,7 +368,7 @@ However, Python has a really good online documentation system. You can invoke it
           structuring element Bc . A regional maximum is a flat zone not
           surrounded by flat zones of higher gray values.
 
-All the projects listed above have very complete documentation.
+All the projects listed above have very complete documentation. You can also get information on methods of an object by typing, in ``ipython``, something like ``img.ptp?`` where ``img`` is a numpy array to get information on the ``ptp`` function (which returns ``img.max() - img.min()``, by the way).
 
 Footnotes
 ~~~~~~~~~
