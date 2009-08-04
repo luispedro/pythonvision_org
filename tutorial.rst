@@ -35,7 +35,7 @@ First Task: Counting Nuclei
 Our first task will be to take this image and count the number of nuclei (you can click on the image and download it to try this at home):
 
 .. image:: static/images/dna.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
    :target: _static/images/dna.jpeg
 
@@ -83,10 +83,10 @@ If you set up things in a certain way, you might not need the *pylab.show()* lin
 You might be surprised that the image does not look at all like the one above. It will probably look like:
 
 .. image:: static/images/dna-coloured.jpeg
-    :width: 25%
+    :width: 33%
     :align: center
 
-This is because, by default, pylab shows images as a heatmap. You can see the more traditional grey-scale image by switching the colormap used:
+This is because, by default, pylab shows images as a heatmap. You can see the more traditional grey-scale image by switching the colormap used. Instead of the default *jet* colourmap, we can set it to the *gray* one, which is the traditional greyscale representation:
 
 .. code-block:: python
 
@@ -142,7 +142,7 @@ Here's the first idea for counting the nuclei. We are going to threshold the ima
 Here, again, we are taking advantage of the fact that dna is a numpy array and using it in logical operations (*dna > T*). The result is a numpy array of booleans, which pylab shows as a black and white image (or red and blue if you have not previously called *pylab.gray()*).
 
 .. image:: static/images/dna-otsu.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 
@@ -159,7 +159,7 @@ This isn't too good. The image contains many small objects. There are a couple o
 The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *pyslic* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
 
 .. image:: static/images/dnaf-otsu.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 We now have some merged nuclei (those that are touching), but overall the result looks much better. The final count is only one extra function call away:
@@ -176,7 +176,7 @@ We now have the number of objects in the image (*18*), and we also displayed the
 
 
 .. image:: static/images/dnaf-otsu-labeled.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 We can explore the *labeled* object. It is an integer array of exactly the same size as the image that was given to *ndimage.label()*. It's value is the label of the object at that position, so that values range from 0 (the background) to *nr_objects*.
@@ -188,9 +188,9 @@ The previous result was acceptable for a first pass, but there were still nuclei
 
 Here is a simple, traditional, idea:
 
-    # smooth the image
-    # find regional maxima
-    # Use the regional maxima as seeds for watershed
+1. smooth the image
+2. find regional maxima
+3. Use the regional maxima as seeds for watershed
 
 Finding the seeds
 -----------------
@@ -204,16 +204,16 @@ Here's our first try:
    pylab.imshow(pymorph.overlay(dna, rmax))
    pylab.show()
 
-The ``pymorph.overlay()`` returns a colour image with the grey level component being given by its first argument while overlay its second argument. The result doesn't look so good:
+The ``pymorph.overlay()`` returns a colour image with the grey level component being given by its first argument while overlaying its second argument as a red channel. The result doesn't look so good:
 
 .. image:: static/images/dnaf-rmax-overlay.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 If we look at the filtered image, we can see the multiple maxima:
 
 .. image:: static/images/dnaf-8.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 After a little fiddling around, we decide to try the same idea with a bigger sigma value:
@@ -227,7 +227,7 @@ After a little fiddling around, we decide to try the same idea with a bigger sig
 Now things look much better.
 
 .. image:: static/images/dnaf-16-rmax-overlay.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
 We can easily count the number of nuclei now:
@@ -249,16 +249,18 @@ We are going to apply watershed to the distance transform of the thresholded ima
    T = pyslic.thresholding.otsu(dnaf)
    dist = ndimage.distance_transform_edt(dnaf > T)
    dist = dist.max() - dist
-   dist = ((dist - dist.min())/float(dist.ptp())*255).astype(np.uint8)
+   dist -= dist.min()
+   dist = dist/float(dist.ptp()) * 255
+   dist = dist.astype(np.uint8)
    pylab.imshow(dist)
    pylab.show()
 
 
 .. image:: static/images/dnaf-16-dist.jpeg
-   :width: 25%
+   :width: 33%
    :align: center
 
-We can now call ``pymorph.cwatershed`` to get the final result:
+After we contrast stretched the ``dist`` image, we can call ``pymorph.cwatershed`` to get the final result [#]_ (the colours in the image come from it being displayed using the *jet* colourmap):
 
 .. code-block:: python
 
@@ -267,7 +269,7 @@ We can now call ``pymorph.cwatershed`` to get the final result:
    pylab.show()
 
 .. image:: static/images/nuclei-segmented.png
-   :width: 25%
+   :width: 33%
    :align: center
 
 It's easy to extend this segmentation to the whole plane by using generalised Voronoi (i.e., each pixel gets assigned to its nearest nucleus):
@@ -280,7 +282,7 @@ It's easy to extend this segmentation to the whole plane by using generalised Vo
    pylab.show()
 
 .. image:: static/images/whole-segmented.png
-   :width: 25%
+   :width: 33%
    :align: center
 
 Often, we want to provide a little quality control and remove those cells whose nucleus touches the border. So, let's do that:
@@ -329,7 +331,7 @@ This sets the borders of that array to ``True`` (``1`` is often synonimous with 
 Now we iterate over the border objects and everywhere that ``whole`` takes that value, we set it to zero [#]_. We now get our final result:
 
 .. image:: static/images/whole-segmented-filtered.png
-   :width: 25%
+   :width: 33%
    :align: center
 
 
@@ -383,5 +385,6 @@ Footnotes
 
 .. [#] If you are not too familiar with Python, you might not be confortable with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is not always clear what 3 divided by 2 should be. The *integer division* answer is that it's 1 (with remainder 1), while the *floating-point division* answer is that it is 1.5. In Python, the *//* operator always gives you the integer division, while */* used to give you integer division and now gives you the floating-point one.
 
-.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``. Multiplying or adding boolean arrays might seem strange at first, but it's a very useful idiom.
+.. [#] If you have it installed (it is available automatically on juggernaut2), you can replace ``pymorph.cwatershed`` by ``morph.cwatershed`` (after ``import morph``, of course), which is a much faster implementation of exactly the same function (``pymorph`` is pure Python while ``morph`` is C++).
 
+.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``. Multiplying or adding boolean arrays might seem strange at first, but it's a very useful idiom.
