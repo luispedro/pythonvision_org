@@ -4,18 +4,21 @@ import pylab
 import pymorph
 import readmagick
 from scipy import ndimage
+from pylab import cm
 import pyslic
 dna = readmagick.readimg('dna.jpeg')
 
-TESTING = True
+TESTING = False
 if TESTING:
     def savejet(img, name):
         pass
     def writeimg(img, name):
         pass
 else:
-    def savejet(img):
-        readmagick.writeimg((cm.jet(dnaf)[:,:,:3]*255).astype(np.uint8), name)
+    def savejet(img, name):
+        img = (img - img.min())/float(img.ptp())*255
+        img = img.astype(np.uint8)
+        readmagick.writeimg((cm.jet(img)[:,:,:3]*255).astype(np.uint8), name)
     writeimg = readmagick.writeimg
 
 dnaf = ndimage.gaussian_filter(dna, 8)

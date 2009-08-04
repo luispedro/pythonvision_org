@@ -202,6 +202,7 @@ Here's our first try:
    dnaf = ndimage.gaussian_filter(dna, 8)
    rmax = pymorph.regmax(dnaf)
    pylab.imshow(pymorph.overlay(dna, rmax))
+   pylab.show()
 
 The ``pymorph.overlay()`` returns a colour image with the grey level component being given by its first argument while overlay its second argument. The result doesn't look so good:
 
@@ -382,4 +383,5 @@ Footnotes
 
 .. [#] If you are not too familiar with Python, you might not be confortable with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is not always clear what 3 divided by 2 should be. The *integer division* answer is that it's 1 (with remainder 1), while the *floating-point division* answer is that it is 1.5. In Python, the *//* operator always gives you the integer division, while */* used to give you integer division and now gives you the floating-point one.
 
-.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``.
+.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``. Multiplying or adding boolean arrays might seem strange at first, but it's a very useful idiom.
+
