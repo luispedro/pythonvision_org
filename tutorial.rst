@@ -50,7 +50,7 @@ Before we start, let us import the needed files. For all code examples in this t
     import readmagick
     from scipy import ndimage
 
-These are the packages listed above (except *pylab* is a part of matplotlib).
+These are the packages listed above (except *pylab*, which is a part of matplotlib).
 
 In Python, there is image processing tools spread across many packages instead of a single package. Fortunately, they all work on the same data representation, the numpy array [#]_. A numpy array is, in our case, either a two dimensional array of integers (height x width) or, for colour images, a three dimensional array (height x width x 3 or height x width x 4, with the last dimension storing (red,green,blue) triplets or (red,green,blue,alpha) if you are considering transparency).
 
