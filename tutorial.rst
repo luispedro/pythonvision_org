@@ -27,7 +27,13 @@ You will need one of the following packages:
     - Python Image Library
     - readmagick
 
-You should also download and install pymorph.
+You should also download and install:
+    - pymorph
+    - pit (Python Image Toolkit)
+
+The first package contains morphological code. It was written by Roberto A. Lotufo and Rubens C. Machado but is now maintained by me. The second package contains a fairly random assortment of image processing tools and was written by me. You can download both from PyPI_.
+
+.. _PyPI: http://pypi.python.org/
 
 First Task: Counting Nuclei
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,6 +54,7 @@ Before we start, let us import the needed files. For all code examples in this t
     import pylab
     import pymorph
     import readmagick
+    import pit
     from scipy import ndimage
 
 These are the packages listed above (except *pylab*, which is a part of matplotlib).
@@ -134,8 +141,7 @@ Here's the first idea for counting the nuclei. We are going to threshold the ima
 
 .. code-block:: python
 
-    import pyslic
-    T = pyslic.thresholding.otsu(dna)
+    T = pit.thresholding.otsu(dna)
     pylab.imshow(dna > T)
     pylab.show()
 
@@ -150,13 +156,12 @@ This isn't too good. The image contains many small objects. There are a couple o
 
 .. code-block:: python
 
-   import pyslic
    dnaf = ndimage.gaussian_filter(dna, 8)
-   T = pyslic.thresholding.otsu(dnaf)
+   T = pit.thresholding.otsu(dnaf)
    pylab.imshow(dnaf > T)
    pylab.show()
 
-The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *pyslic* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
+The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *pit* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
 
 .. image:: static/images/dnaf-otsu.jpeg
    :width: 33%
@@ -246,7 +251,7 @@ We are going to apply watershed to the distance transform of the thresholded ima
 
 .. code-block:: python
 
-   T = pyslic.thresholding.otsu(dnaf)
+   T = pit.thresholding.otsu(dnaf)
    dist = ndimage.distance_transform_edt(dnaf > T)
    dist = dist.max() - dist
    dist -= dist.min()
@@ -276,8 +281,7 @@ It's easy to extend this segmentation to the whole plane by using generalised Vo
 
 .. code-block:: python
 
-   import pyslic
-   whole = pyslic.segmentation.gvoronoi(nuclei)
+   whole = pit.segmentation.gvoronoi(nuclei)
    pylab.imshow(whole)
    pylab.show()
 
