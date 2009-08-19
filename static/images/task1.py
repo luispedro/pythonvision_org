@@ -3,6 +3,7 @@ import scipy
 import pylab
 import pymorph
 import readmagick
+import pit
 from scipy import ndimage
 dna = readmagick.readimg('dna.jpeg')
 
@@ -30,13 +31,12 @@ print dna.min()
 pylab.imshow(dna // 2)
 pylab.show()
 
-import pyslic
-T = pyslic.thresholding.otsu(dna)
+T = pit.thresholding.otsu(dna)
 pylab.imshow(dna > T)
 pylab.show()
 
 dnaf = ndimage.gaussian_filter(dna, 8)
-T = pyslic.thresholding.otsu(dnaf)
+T = pit.thresholding.otsu(dnaf)
 pylab.imshow(dnaf > T)
 pylab.show()
 

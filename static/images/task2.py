@@ -5,7 +5,7 @@ import pymorph
 import readmagick
 from scipy import ndimage
 from pylab import cm
-import pyslic
+import pit
 dna = readmagick.readimg('dna.jpeg')
 
 TESTING = False
@@ -38,7 +38,7 @@ writeimg(pymorph.overlay(dna, rmax), 'dnaf-16-rmax-overlay.jpeg')
 seeds,nr_nuclei = ndimage.label(rmax)
 print nr_nuclei
 
-T = pyslic.thresholding.otsu(dnaf)
+T = pit.thresholding.otsu(dnaf)
 dist = ndimage.distance_transform_edt(dnaf > T)
 dist = dist.max() - dist
 dist = ((dist - dist.min())/float(dist.ptp())*255).astype(np.uint8)
@@ -53,7 +53,7 @@ pylab.show()
 savejet(nuclei, 'nuclei-segmented.png')
 
 
-whole = pyslic.segmentation.gvoronoi(nuclei)
+whole = pit.segmentation.gvoronoi(nuclei)
 pylab.imshow(whole)
 pylab.show()
 savejet(whole, 'whole-segmented.png')
