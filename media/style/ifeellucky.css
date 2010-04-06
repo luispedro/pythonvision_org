@@ -399,7 +399,7 @@ h3, h4, h5 {
 	display: block;
 }
 #wrap #contents ul  li {
-	background-image: url(/media/images/bullet.gif);
+	background-image: url(/media/images/bullet.png);
 	background-repeat: no-repeat;
 	background-position: 1px 2px;
 	padding-left: 20px;
