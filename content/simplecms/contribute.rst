@@ -1,8 +1,8 @@
 title: Contribute
-url: /contribute
+url: contribute
 categories: pythonvision
 author: Luis Pedro Coelho <lpc@cmu.edu>
-..
+---
 
 =================
 How to Contribute
@@ -68,8 +68,11 @@ The content for a blogpost needs the following fields:
 2. slug: a short string that is suitable for URL use
 3. timestamp: when this is published
 4. categories: this is a space separated list of categories (the list must
-match the `categories </categories>`_).
-6. author: Use ``Name <email>`` format.
-5. status: Right now, it only matters whether it is *published*, in which case
-it shows up; or not, in which case it doesn't.
+   match the `categories </categories>`_).
+5. author: Use ``Name <email>`` format.
+6. status: Right now, it only matters whether it is *published*, in which case
+   it shows up; or not, in which case it doesn't.
+
+Note that it is the ``timestamp`` field that decides when a post was published
+and where it appears if viewed by date.
 
