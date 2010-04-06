@@ -5,13 +5,13 @@ children:
         children:
         -   name: Python Image Processing Tutorial
             title: Python Tutorial
-            url: tutorial/
+            url: basic-tutorial/
     -   name: Contribute
         url: contribute/
         children:
         -   name: Contribute
             title: How to contribute
-            url: How to contribute
+            url: contribute
         -   name: django-gitcms
             title: Do a website with django and git
             url: http://luispedro.org/software/git-cms
