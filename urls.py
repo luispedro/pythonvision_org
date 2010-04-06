@@ -6,7 +6,7 @@ import gitcms.files.urls
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^media/(?P<path>.+)$', 'django.views.static.serve', {'document_root': settings._BASE_DIR + '/media'}),
+    (r'^media/(?P<path>.+)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^admin/', include(admin.site.urls)),
 )
 urlpatterns += gitcms.files.urls.urlpatterns
