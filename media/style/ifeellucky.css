@@ -195,12 +195,12 @@ h1 {
 	display: block;
 	margin-bottom: 10px;
 }
-#wrap #sidebar .sidebarcontent #latestposts {
+#wrap #sidebar .sidebarcontent .submenu {
 	padding: 5px;
 	list-style-type: none;
 	margin-bottom: 15px;
 }
-#wrap #sidebar .sidebarcontent #latestposts a {
+#wrap #sidebar .sidebarcontent .submenu a {
 	color: #999999;
 	text-decoration: none;
 	display: block;
@@ -212,7 +212,7 @@ h1 {
 	border-bottom-style: solid;
 	border-bottom-color: #232323;
 }
-#wrap #sidebar .sidebarcontent #latestposts li {
+#wrap #sidebar .sidebarcontent .submenu li {
 	display: block;
 	height: 25px;
 }
@@ -273,7 +273,7 @@ a {
 	clear: left;
 	width: 99%;
 }
-#wrap #sidebar .sidebarcontent #latestposts a:visited, active {
+#wrap #sidebar .sidebarcontent .submenu a:visited, active {
 	color: #999999;
 	text-decoration: none;
 	display: block;
@@ -285,7 +285,7 @@ a {
 	border-bottom-style: solid;
 	border-bottom-color: #232323;
 }
-#wrap #sidebar .sidebarcontent #latestposts a:hover {
+#wrap #sidebar .sidebarcontent .submenu a:hover {
 	color: #CCCCCC;
 	text-decoration: none;
 	display: block;
