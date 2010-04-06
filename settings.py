@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'gitcms.simpletagging',
     'gitcms.simplecms',
     'gitcms.simplemenus',
+    'gitcms.blog',
     'gitcms.files',
     'gitcms.redirect',
 )
