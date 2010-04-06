@@ -1,0 +1,51 @@
+{% load simplemenu_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% block head %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Pythonvision{% endblock %}</title>
+    <link href="/media/style/ifeellucky.css" rel="stylesheet" type="text/css" />
+    {% endblock %}
+</head>
+
+<body>
+<div id="wrap">
+    <div id="header">
+        <h1 id="sitename"><span class="big">pv</span>
+         <span class="logosmall">pythonvision</span></h1>
+          <div id="navigation">
+            {% block topbar %}
+                {% show_tabs "Top Menu" %}
+            {% endblock %}
+          </div>
+        <div class="clear"></div>
+    </div>
+    <div id="contents">
+        {% autoescape off %}
+            {% block content %}
+                My content
+            {% endblock %}
+        {% endautoescape %}
+        <h1>Copyright</h1>
+        <p>This Template released under Creative Common License 3.0. So, please do not delete the credit text &quot;CSS Template by Rambling Soul&quot;.</p>
+        <div class="clear"></div>
+    </div>
+<div id="sidebar">
+    <span class="sidebartop"></span>
+    <div class="sidebarcontent">
+      {% block sidebar %}
+        {% show_menu "Main Menu" %}
+      {% endblock %}
+      </div>
+    </div>
+    <span class="sidebarbtm"></span>
+</div>
+<div class="clear"></div>
+</div>
+<div id="footer">
+    Copyright &copy; pythonvision.org
+    <div id="templateinfo"><a href="http://www.ramblingsoul.com">CSS Template</a> by Rambling Soul</div>
+</div>
+</body>
+</html>
