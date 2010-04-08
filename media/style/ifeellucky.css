@@ -242,11 +242,14 @@ a {
 }
 #contents a {
 	display: inline;
-	padding: 3px;
-	height: 15px;
+	padding-top: 1px;
+	padding-bottom: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
+	height: 12px;
 	margin-right: 5px;
 	margin-left: 5px;
-	background-color: #FFFFCC;
+	background-color: #FFD;
 	border-top-style: none;
 	border-right-style: none;
 	border-bottom-style: none;
