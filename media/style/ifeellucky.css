@@ -157,26 +157,29 @@ h1 {
 
 #wrap #sidebar {
 	margin-top: 25px;
-	background-color: #000000;
 	width: 390px;
 	float: right;
 	color: #CCCCCC;
 	margin-bottom: 15px;
 }
 #wrap #sidebar .sidebarcontent {
+	background-color: #000000;
 	padding: 10px;
 }
 #wrap #sidebar .sidebartop {
 	background-image: url(/media/images/sidebartop.png);
+	background-color: #000000;
 	background-repeat: no-repeat;
 	display: block;
 	height: 11px;
 }
 #wrap #sidebar .sidebarbtm {
 	background-image: url(/media/images/sidebarbottom.png);
+	background-color: #000000;
 	display: block;
 	height: 13px;
 	background-repeat: no-repeat;
+    margin-bottom: 2em;
 }
 
 #wrap #contents p {
