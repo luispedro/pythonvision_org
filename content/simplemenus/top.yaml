@@ -8,5 +8,7 @@ children:
         url: /software
     -   name: Contribute
         url: /contribute
+    -   name: Blog
+        url: /blog/
 
 
