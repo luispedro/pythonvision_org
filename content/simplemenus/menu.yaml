@@ -1,18 +1,18 @@
 name: Main Menu
 children:
-    -   name: Tutorial
+    -   name: Tutorials
         url: tutorial/
         children:
-        -   name: Python Image Processing Tutorial
+        -   name: Basic Python Image Processing Tutorial
             title: Python Tutorial
-            url: basic-tutorial/
+            url: basic-tutorial
     -   name: Contribute
         url: contribute/
         children:
         -   name: Contribute
-            title: How to contribute
+            title: How to contribute to pythonvision.org
             url: contribute
         -   name: django-gitcms
-            title: Do a website with django and git
+            title: The technology behind this website
             url: http://luispedro.org/software/git-cms
 
