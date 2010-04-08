@@ -8,7 +8,9 @@ Python Image Tutorial
 =======================
 
 
-More than a HOWTO, this document is a HOW-DO-I use Python to do my image processing tasks. Image processing means many things to many people, so I will use a couple of examples from my research to illustrate.
+More than a HOWTO, this document is a HOW-DO-I use Python to do my image
+processing tasks. Image processing means many things to many people, so I will
+use a couple of examples from my research to illustrate.
 
 Introduction
 ~~~~~~~~~~~~
@@ -23,7 +25,12 @@ I am going to assuyme that you have installed the following:
     - matplotlib
     - ipython
 
-Under Linux, you can just install your distribution's packages (install at least python-numpy, python-scipy, python-numpy-dev, python-matplotlib, ipython). Under Windows or Mac OS, this is more complicated. Fortunately, some people have done the work for us and built packages that have this. Install either Python xy or the Enthought Python Distribution (actually this works on Linux too, if you prefer this method).
+Under Linux, you can just install your distribution's packages (install at
+least python-numpy, python-scipy, python-numpy-dev, python-matplotlib,
+ipython). Under Windows or Mac OS, this is more complicated. Fortunately, some
+people have done the work for us and built packages that have this. Install
+either Python xy or the Enthought Python Distribution (actually this works on
+Linux too, if you prefer this method).
 
 Other Software
 --------------
@@ -34,23 +41,29 @@ You will need one of the following packages:
 
 You should also download and install:
     - pymorph
-    - pit (Python Image Toolkit)
+    - mahotas (Python Image Toolkit)
 
-The first package contains morphological code. It was written by Roberto A. Lotufo and Rubens C. Machado but is now maintained by me. The second package contains a fairly random assortment of image processing tools and was written by me. You can download both from PyPI_.
+The first package contains morphological code. It was written by Roberto A.
+Lotufo and Rubens C. Machado but is now maintained by me. The second package
+contains a fairly random assortment of image processing tools and was written
+by me. You can download both from PyPI_.
 
 .. _PyPI: http://pypi.python.org/
 
 First Task: Counting Nuclei
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our first task will be to take this image and count the number of nuclei (you can click on the image and download it to try this at home):
+Our first task will be to take this image and count the number of nuclei (you
+can click on the image and download it to try this at home):
 
-.. image:: static/images/dna.jpeg
+.. image:: /media/files/images/dna.jpeg
    :width: 33%
    :align: center
-   :target: _static/images/dna.jpeg
+   :target: /media/files/images/dna.jpeg
 
-Before we start, let us import the needed files. For all code examples in this tutorial, I am going to assume that you typed the following before coming to the example:
+Before we start, let us import the needed files. For all code examples in this
+tutorial, I am going to assume that you typed the following before coming to
+the example:
 
 .. sourcecode:: python
 
@@ -59,12 +72,18 @@ Before we start, let us import the needed files. For all code examples in this t
     import pylab
     import pymorph
     import readmagick
-    import pit
+    import mahotas
     from scipy import ndimage
 
 These are the packages listed above (except *pylab*, which is a part of matplotlib).
 
-In Python, there is image processing tools spread across many packages instead of a single package. Fortunately, they all work on the same data representation, the numpy array [#]_. A numpy array is, in our case, either a two dimensional array of integers (height x width) or, for colour images, a three dimensional array (height x width x 3 or height x width x 4, with the last dimension storing (red,green,blue) triplets or (red,green,blue,alpha) if you are considering transparency).
+In Python, there is image processing tools spread across many packages instead
+of a single package. Fortunately, they all work on the same data
+representation, the numpy array [#]_. A numpy array is, in our case, either a
+two dimensional array of integers (height x width) or, for colour images, a
+three dimensional array (height x width x 3 or height x width x 4, with the
+last dimension storing (red,green,blue) triplets or (red,green,blue,alpha) if
+you are considering transparency).
 
 The first step is to get the image from disk into a memory array:
 
@@ -90,15 +109,22 @@ In interactive mode (i.e., if you are running this inside *ipython*), you can se
    pylab.imshow(dna)
    pylab.show()
 
-If you set up things in a certain way, you might not need the *pylab.show()* line. For most installations, you can get this by running *ipython -pylab* on the command line [#]_.
+If you set up things in a certain way, you might not need the *pylab.show()*
+line. For most installations, you can get this by running *ipython -pylab* on
+the command line [#]_.
 
-You might be surprised that the image does not look at all like the one above. It will probably look like:
+You might be surprised that the image does not look at all like the one above.
+It will probably look like:
 
-.. image:: static/images/dna-coloured.jpeg
+.. image:: /media/files/images/dna-coloured.jpeg
     :width: 33%
     :align: center
+    :target: /media/files/images/dna-coloured.jpeg
 
-This is because, by default, pylab shows images as a heatmap. You can see the more traditional grey-scale image by switching the colormap used. Instead of the default *jet* colourmap, we can set it to the *gray* one, which is the traditional greyscale representation:
+This is because, by default, pylab shows images as a heatmap. You can see the
+more traditional grey-scale image by switching the colormap used. Instead of
+the default *jet* colourmap, we can set it to the *gray* one, which is the
+traditional greyscale representation:
 
 .. sourcecode:: python
 
@@ -128,14 +154,19 @@ The above code prints out:
     252
     0
 
-The shape is 1024 pixels high and 1344 pixels across (recall that the convention is the matrix convention: *height x width*). The type is *uint8*, i.e., unsigned 8-bit integer. The maximum value is 252 and the minimum value is 0 [#]_. 
+The shape is 1024 pixels high and 1344 pixels across (recall that the
+convention is the matrix convention: *height x width*). The type is *uint8*,
+i.e., unsigned 8-bit integer. The maximum value is 252 and the minimum value is
+0 [#]_. 
 
 .. sourcecode:: python
 
     pylab.imshow(dna // 2)
     pylab.show()
 
-Here, we are displaying an image where all the values have been divided by 2 [#]_. And the displayed image is still the same! In fact, pylab contrast-stretches our images before displaying them.
+Here, we are displaying an image where all the values have been divided by 2
+[#]_. And the displayed image is still the same! In fact, pylab
+contrast-stretches our images before displaying them.
 
 
 Some Actual Work
@@ -146,33 +177,45 @@ Here's the first idea for counting the nuclei. We are going to threshold the ima
 
 .. sourcecode:: python
 
-    T = pit.thresholding.otsu(dna)
+    T = mahotas.thresholding.otsu(dna)
     pylab.imshow(dna > T)
     pylab.show()
 
-Here, again, we are taking advantage of the fact that dna is a numpy array and using it in logical operations (*dna > T*). The result is a numpy array of booleans, which pylab shows as a black and white image (or red and blue if you have not previously called *pylab.gray()*).
+Here, again, we are taking advantage of the fact that dna is a numpy array and
+using it in logical operations (*dna > T*). The result is a numpy array of
+booleans, which pylab shows as a black and white image (or red and blue if you
+have not previously called *pylab.gray()*).
 
-.. image:: static/images/dna-otsu.jpeg
+.. image:: /media/files/images/dna-otsu.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dna-otsu.jpeg
 
 
-This isn't too good. The image contains many small objects. There are a couple of ways to solve this. A simple one is to smooth the image a bit using a Gaussian filter.
+This isn't too good. The image contains many small objects. There are a couple
+of ways to solve this. A simple one is to smooth the image a bit using a
+Gaussian filter.
 
 .. sourcecode:: python
 
    dnaf = ndimage.gaussian_filter(dna, 8)
-   T = pit.thresholding.otsu(dnaf)
+   T = mahotas.thresholding.otsu(dnaf)
    pylab.imshow(dnaf > T)
    pylab.show()
 
-The function *ndimage.gaussian_filter* takes an image and the standard deviation of the filter (in pixel units) and returns the filtered image. We are jumping from one package to the next, calling *ndimage* to filter the image, *pit* to compute the threshold and *pylab* to display it, but everyone works with *numpy arrays*. The result is much better:
+The function *ndimage.gaussian_filter* takes an image and the standard
+deviation of the filter (in pixel units) and returns the filtered image. We are
+jumping from one package to the next, calling *ndimage* to filter the image,
+*mahotas* to compute the threshold and *pylab* to display it, but everyone
+works with *numpy arrays*. The result is much better:
 
-.. image:: static/images/dnaf-otsu.jpeg
+.. image:: /media/files/images/dnaf-otsu.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-otsu.jpeg
 
-We now have some merged nuclei (those that are touching), but overall the result looks much better. The final count is only one extra function call away:
+We now have some merged nuclei (those that are touching), but overall the
+result looks much better. The final count is only one extra function call away:
 
 .. sourcecode:: python
 
@@ -182,19 +225,25 @@ We now have some merged nuclei (those that are touching), but overall the result
    pylab.jet()
    pylab.show()
 
-We now have the number of objects in the image (*18*), and we also displayed the *labeled* image. The call to *pylab.jet()* just resets the colourmap to *jet* if you still had the greyscale map active.
+We now have the number of objects in the image (*18*), and we also displayed
+the *labeled* image. The call to *pylab.jet()* just resets the colourmap to
+*jet* if you still had the greyscale map active.
 
-
-.. image:: static/images/dnaf-otsu-labeled.jpeg
+.. image:: /media/files/images/dnaf-otsu-labeled.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-otsu-labeled.jpeg
 
-We can explore the *labeled* object. It is an integer array of exactly the same size as the image that was given to *ndimage.label()*. It's value is the label of the object at that position, so that values range from 0 (the background) to *nr_objects*.
+We can explore the *labeled* object. It is an integer array of exactly the same
+size as the image that was given to *ndimage.label()*. It's value is the label
+of the object at that position, so that values range from 0 (the background) to
+*nr_objects*.
 
 Second Task: Segmenting the Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The previous result was acceptable for a first pass, but there were still nuclei glued together. Let's try to do better.
+The previous result was acceptable for a first pass, but there were still
+nuclei glued together. Let's try to do better.
 
 Here is a simple, traditional, idea:
 
@@ -214,17 +263,21 @@ Here's our first try:
    pylab.imshow(pymorph.overlay(dna, rmax))
    pylab.show()
 
-The ``pymorph.overlay()`` returns a colour image with the grey level component being given by its first argument while overlaying its second argument as a red channel. The result doesn't look so good:
+The ``pymorph.overlay()`` returns a colour image with the grey level component
+being given by its first argument while overlaying its second argument as a red
+channel. The result doesn't look so good:
 
-.. image:: static/images/dnaf-rmax-overlay.jpeg
+.. image:: /media/files/images/dnaf-rmax-overlay.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-rmax-overlay.jpeg
 
 If we look at the filtered image, we can see the multiple maxima:
 
-.. image:: static/images/dnaf-8.jpeg
+.. image:: /media/files/images/dnaf-8.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-8.jpeg
 
 After a little fiddling around, we decide to try the same idea with a bigger sigma value:
 
@@ -236,9 +289,10 @@ After a little fiddling around, we decide to try the same idea with a bigger sig
 
 Now things look much better.
 
-.. image:: static/images/dnaf-16-rmax-overlay.jpeg
+.. image:: /media/files/images/dnaf-16-rmax-overlay.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-16-rmax-overlay.jpeg
 
 We can easily count the number of nuclei now:
 
@@ -256,7 +310,7 @@ We are going to apply watershed to the distance transform of the thresholded ima
 
 .. sourcecode:: python
 
-   T = pit.thresholding.otsu(dnaf)
+   T = mahotas.thresholding.otsu(dnaf)
    dist = ndimage.distance_transform_edt(dnaf > T)
    dist = dist.max() - dist
    dist -= dist.min()
@@ -266,11 +320,14 @@ We are going to apply watershed to the distance transform of the thresholded ima
    pylab.show()
 
 
-.. image:: static/images/dnaf-16-dist.jpeg
+.. image:: /media/files/images/dnaf-16-dist.jpeg
    :width: 33%
    :align: center
+   :target: /media/files/images/dnaf-16-dist.jpeg
 
-After we contrast stretched the ``dist`` image, we can call ``pymorph.cwatershed`` to get the final result [#]_ (the colours in the image come from it being displayed using the *jet* colourmap):
+After we contrast stretched the ``dist`` image, we can call
+``pymorph.cwatershed`` to get the final result [#]_ (the colours in the image
+come from it being displayed using the *jet* colourmap):
 
 .. sourcecode:: python
 
@@ -278,23 +335,27 @@ After we contrast stretched the ``dist`` image, we can call ``pymorph.cwatershed
    pylab.imshow(nuclei)
    pylab.show()
 
-.. image:: static/images/nuclei-segmented.png
+.. image:: /media/files/images/nuclei-segmented.png
    :width: 33%
    :align: center
+   :target: /media/files/images/nuclei-segmented.png
 
-It's easy to extend this segmentation to the whole plane by using generalised Voronoi (i.e., each pixel gets assigned to its nearest nucleus):
+It's easy to extend this segmentation to the whole plane by using generalised
+Voronoi (i.e., each pixel gets assigned to its nearest nucleus):
 
 .. sourcecode:: python
 
-   whole = pit.segmentation.gvoronoi(nuclei)
+   whole = mahotas.segmentation.gvoronoi(nuclei)
    pylab.imshow(whole)
    pylab.show()
 
-.. image:: static/images/whole-segmented.png
+.. image:: /media/files/images/whole-segmented.png
    :width: 33%
    :align: center
+   :target: /media/files/images/whole-segmented.png
 
-Often, we want to provide a little quality control and remove those cells whose nucleus touches the border. So, let's do that:
+Often, we want to provide a little quality control and remove those cells whose
+nucleus touches the border. So, let's do that:
 
 .. sourcecode:: python
 
@@ -324,13 +385,16 @@ This builds an array of zeros, with the same shape as nuclei and of type ``np.bo
    borders[:, 0] = 1
    borders[:,-1] = 1
 
-This sets the borders of that array to ``True`` (``1`` is often synonimous with ``True``).
+This sets the borders of that array to ``True`` (``1`` is often synonymous with ``True``).
 
 .. sourcecode:: python
 
    at_border = np.unique(nuclei[borders])
 
-``nuclei[borders]`` gets the values that the nuclei array has where ``borders`` is ``True`` (i.e., the value at the borders), then ``np.unique`` returns only the unique values (in our case, it returns ``array([ 0,  1,  2,  3,  4,  6,  8, 13, 20, 21, 22])``).
+``nuclei[borders]`` gets the values that the nuclei array has where ``borders``
+is ``True`` (i.e., the value at the borders), then ``np.unique`` returns only
+the unique values (in our case, it returns ``array([ 0,  1,  2,  3,  4,  6,  8,
+13, 20, 21, 22])``).
 
 .. sourcecode:: python
 
@@ -339,20 +403,26 @@ This sets the borders of that array to ``True`` (``1`` is often synonimous with 
 
 Now we iterate over the border objects and everywhere that ``whole`` takes that value, we set it to zero [#]_. We now get our final result:
 
-.. image:: static/images/whole-segmented-filtered.png
+.. image:: /media/files/images/whole-segmented-filtered.png
    :width: 33%
    :align: center
+   :target: /media/files/images/whole-segmented-filtered.png
 
 
 Learn More
 ~~~~~~~~~~
 
-You can explore the documentation for numpy at `docs.numpy.org`_. You will find documentation for scipy at the same location. For pymorph, you can look at its `original documentation`_.
+You can explore the documentation for numpy at `docs.numpy.org`_. You will find
+documentation for scipy at the same location. For pymorph, you can look at its
+`original documentation`_.
 
 .. _`docs.numpy.org`: http://docs.numpy.org/
 .. _`original documentation`: http://www.mmorph.com/pymorph/
 
-However, Python has a really good online documentation system. You can invoke it with ``help(name)`` or, if you are using *ipython* just by typing a question mark after the name of the function you are interested in. For example, if you want details on the *pymorph.regmax* function:
+However, Python has a really good online documentation system. You can invoke
+it with ``help(name)`` or, if you are using *ipython* just by typing a question
+mark after the name of the function you are interested in. For example, if you
+want details on the *pymorph.regmax* function:
 
 ::
 
@@ -380,20 +450,43 @@ However, Python has a really good online documentation system. You can invoke it
           structuring element Bc . A regional maximum is a flat zone not
           surrounded by flat zones of higher gray values.
 
-All the projects listed above have very complete documentation. You can also get information on methods of an object by typing, in ``ipython``, something like ``img.ptp?`` where ``img`` is a numpy array to get information on the ``ptp`` function (which returns ``img.max() - img.min()``, by the way).
+All the projects listed above have very complete documentation. You can also
+get information on methods of an object by typing, in ``ipython``, something
+like ``img.ptp?`` where ``img`` is a numpy array to get information on the
+``ptp`` function (which returns ``img.max() - img.min()``, by the way).
 
 Footnotes
 ~~~~~~~~~
 
 
-.. [#] Strictly speaking, this is not true. There is also the Python Imaging Library (PIL), which is not the same as numpy (in fact, you have to convert back and forth). For the kind of image processing that I will be talking about, this does not matter as PIL is targetted towards other types of image manipulation.
+.. [#] Strictly speaking, this is not true. There is also the Python Imaging
+       Library (PIL), which is not the same as numpy (in fact, you have to
+       convert back and forth). For the kind of image processing that I will be
+       talking about, this does not matter as PIL is targetted towards other
+       types of image manipulation.
 
-.. [#] This is so useful that, if you are familiar with the shell, you might consider setting up an alias *pylab=ipython -pylab*. The pylab argument also imports several numerical packages (including numpy, which is named np, scipy, and pylab).
+.. [#] This is so useful that, if you are familiar with the shell, you might
+       consider setting up an alias *pylab=ipython -pylab*. The pylab argument
+       also imports several numerical packages (including numpy, which is named
+       np, scipy, and pylab).
 
 .. [#] For the curious, I contrast stretched the image for this tutorial.
 
-.. [#] If you are not too familiar with Python, you might not be confortable with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is not always clear what 3 divided by 2 should be. The *integer division* answer is that it's 1 (with remainder 1), while the *floating-point division* answer is that it is 1.5. In Python, the *//* operator always gives you the integer division, while */* used to give you integer division and now gives you the floating-point one.
+.. [#] If you are not too familiar with Python, you might not be confortable
+       with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is
+       not always clear what 3 divided by 2 should be. The *integer division*
+       answer is that it's 1 (with remainder 1), while the *floating-point
+       division* answer is that it is 1.5. In Python, the *//* operator always
+       gives you the integer division, while */* used to give you integer
+       division and now gives you the floating-point one.
 
-.. [#] If you have it installed (it is available automatically on juggernaut2), you can replace ``pymorph.cwatershed`` by ``morph.cwatershed`` (after ``import morph``, of course), which is a much faster implementation of exactly the same function (``pymorph`` is pure Python while ``morph`` is C++).
+.. [#] If you have it installed, you can replace ``pymorph.cwatershed`` by
+       ``mahotas.cwatershed`` (after ``import mahotas``, of course), which is a
+       much faster implementation of exactly the same function (``pymorph`` is
+       pure Python while ``mahotas`` is C++).
 
-.. [#] In practice this is not the most efficient way to do this. The same operation can be done much faster like this ``for obj in at_border: whole *= (whole != obj)``. Multiplying or adding boolean arrays might seem strange at first, but it's a very useful idiom.
+.. [#] In practice this is not the most efficient way to do this. The same
+       operation can be done much faster using ``for obj in at_border: whole *=
+       (whole != obj)``. Multiplying or adding boolean arrays might seem
+       strange at first, but it's a very useful idiom.
+
