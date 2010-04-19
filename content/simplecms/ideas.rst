@@ -15,6 +15,8 @@ Here are some ideas for contribution:
    <http://luispedro.org/software/git-cms>`_ project.
 3. Organise the software pages.
 4. Do a screencast of using python for computer vision.
+5. Logo and artwork for pythonvision.org. You might even redesign the whole
+   website look.
 
 These are just ideas. Any contribution is welcome.
 
