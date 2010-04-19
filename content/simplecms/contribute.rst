@@ -9,7 +9,8 @@ How to Contribute
 =================
 
 Pythonvision wants your help! Write tutorials, introduce your software, write
-about your experience using Python.
+about your experience using Python. We have a page for `ideas
+</contribute/ideas>`_, but we welcome your own.
 
 Step by step with github
 ------------------------
