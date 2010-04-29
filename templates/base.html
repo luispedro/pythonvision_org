@@ -5,48 +5,69 @@
     {% block head %}
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>{% block title %}Pythonvision{% endblock %}</title>
-    <link href="/media/style/ifeellucky.css" rel="stylesheet" type="text/css" />
+    <link href="/media/coolblue/css/screen.css" rel="stylesheet" type="text/css" />
     <link href="/media/style/pygments.css" rel="stylesheet" type="text/css" />
     {% endblock %}
 </head>
 
 <body>
-<div id="wrap">
+<div id="header-wrap">
     <div id="header">
-        <h1 id="sitename"><span class="big">pv</span>
-         <span class="logosmall">pythonvision</span></h1>
-          <div id="navigation">
-            {% block topbar %}
-                {% show_tabs "Top Menu" %}
-            {% endblock %}
-          </div>
+	<a name="top"></a>
+	<h1 id="logo-text"><a href="index.html" title="">pythonvision.org</a></h1>
+	<p id="slogan">Just Another Styleshout CSS Template... </p>
+      <div id="nav">
+        {% block topbar %}
+            {% show_tabs "Top Menu" %}
+        {% endblock %}
+
+      </div>
+       <p id="rss">
+          <a href="index.html">Grab the RSS feed</a>
+       </p>
         <div class="clear"></div>
-    </div>
-    <div id="contents">
-        {% autoescape off %}
-            {% block content %}
-                My content
-            {% endblock %}
-        {% endautoescape %}
-        <div class="clear"></div>
-    </div>
-<div id="sidebar">
-    <span class="sidebartop"></span>
-    <div class="sidebarcontent">
-      {% block sidebar %}
-        {% show_menu "Main Menu" %}
-      {% endblock %}
-    </div>
-    <span class="sidebarbtm"></span>
-    <span class="sidebartop"></span>
-    {% include "promotion.html" %}
-    <span class="sidebarbtm"></span>
+   <form id="quick-search" method="get" action="index.html">
+      <fieldset class="search">
+         <label for="qsearch">Search:</label>
+         <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
+         <button class="btn" title="Submit Search">Search</button>
+      </fieldset>
+   </form>
+
+<!--/header-->
+</div></div>
 </div>
-<div class="clear"></div>
+<div id="content-wrap" class="clear">
+    <div id="content">
+       <div id="main">
+            {% autoescape off %}
+                {% block content %}
+                    My content
+                {% endblock %}
+            {% endautoescape %}
+            <div class="clear"></div>
+        </div>
+
+        <div id="sidebar">
+            <div class="sidemenu">
+              {% block sidebar %}
+                {% show_menu "Main Menu" %}
+              {% endblock %}
+            </div>
+
+            <div class="sidemenu">
+                <h3>Mailing List</h3>
+                {% include "promotion.html" %}
+            </div>
+        </div>
+    </div>
 </div>
 <div id="footer">
+<div id="footer-bottom">
+	<p class="bottom-left">
     Copyright &copy; pythonvision.org
-    <div id="templateinfo"><a href="http://www.ramblingsoul.com">CSS Template</a> by Rambling Soul</div>
+    <div id="templateinfo"><a href="http://www.bluewebtemplates.com/" title="Website Templates">website templates</a> by <a href="http://www.styleshout.com/">styleshout</a></div>
+	</p>
 
     <!-- Site Meter -->
     <script type="text/javascript" src="http://s35.sitemeter.com/js/counter.js?site=s35pythonvision">
