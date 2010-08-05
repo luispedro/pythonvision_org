@@ -7,10 +7,11 @@ categories:
 Python Vision
 =============
 
-This is in BETA
----------------
+This is an open project
+-----------------------
 
-This website is still in beta. Any help is `welcome </contribute>`_.
+You can help edit this site too. Tutorials, thoughts, contributions are
+`welcome </contribute>`_.
 
 About pythonvision.org
 ----------------------
