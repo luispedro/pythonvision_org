@@ -15,23 +15,33 @@ Essential Software
 2. ``numpy``
 3. ``scipy.ndimage``
 
+If you are using Linux, you should use the packages that come with your
+distribution. If you are using Mac OS or Windows, check out `Enthought's Python
+Distribution <http://www.enthought.com/products/epd.php>`_ as a good solution
+if you are not very familiar with how to install Unix-style software. It
+includes all of the packages above.
 
 Recommended Software
 ....................
 
-1. ``ipython``
+1. `ipython <http://ipython.scipy.org/moin/>`_
 2. `pymorph <http://luispedro.org/software/pymorph>`_: Basic (and not so basic)
    image morphological operators.
-
-Non-essential Software
-......................
-
-1. ``scikits.image``
-2. `mahotas <http://luispedro.org/software/mahotas>`_: Several algorithms in
+3. `scikits.image <http://scikits.appspot.com/image>`_ Includes bindings for
+   the OpenCV library.
+4. `mahotas <http://luispedro.org/software/mahotas>`_: Several algorithms in
    fast C++
-3. `readmagick <http://luispedro.org/software/readmagick>`_: Read images using
-   imagemagick. It supports many more file formats than almost any other
-   alternative.
+
+Other Software
+..............
+
+Machine Learning
+~~~~~~~~~~~~~~~~
+
+Often computer vision uses machine learning at its core.
+
+1. `scikit.learn <http://scikit-learn.sourceforge.net/>`_
+2. `milk <http://luispedro.org/software/milk>`_
 
 
 Anything Missing?
