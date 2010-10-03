@@ -35,13 +35,9 @@ Linux too, if you prefer this method).
 Other Software
 --------------
 
-You will need one of the following packages:
-    - Python Image Library
-    - readmagick
-
 You should also download and install:
     - pymorph
-    - mahotas (Python Image Toolkit)
+    - mahotas
 
 The first package contains morphological code. It was written by Roberto A.
 Lotufo and Rubens C. Machado but is now maintained by me. The second package
@@ -71,7 +67,6 @@ the example:
     import scipy
     import pylab
     import pymorph
-    import readmagick
     import mahotas
     from scipy import ndimage
 
@@ -89,15 +84,8 @@ The first step is to get the image from disk into a memory array:
 
 .. sourcecode:: python
 
-   dna = readmagick.readimg('dna.jpeg')
+   dna = mahotas.imread('dna.jpeg')
 
-If you don't have readmagick, you can use:
-
-.. sourcecode:: python
-
-   dna = scipy.misc.pilutil.imread('dna.jpeg')
-
-Readmagick is not as standard as scipy, but it handles more file types.
 
 Playing Around
 ~~~~~~~~~~~~~~
