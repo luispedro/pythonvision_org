@@ -38,10 +38,13 @@ Other Software
 Machine Learning
 ~~~~~~~~~~~~~~~~
 
-Often computer vision uses machine learning at its core.
+Often computer vision uses machine learning at its core. Some machine learning
+packages did it all, but it is better software engineering to keep these
+separate.
 
 1. `scikit.learn <http://scikit-learn.sourceforge.net/>`_
 2. `milk <http://luispedro.org/software/milk>`_
+3. `pymvpa <http://www.pymvpa.org>`_
 
 
 Anything Missing?
