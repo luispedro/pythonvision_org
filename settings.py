@@ -93,6 +93,7 @@ INSTALLED_APPS = (
 
 
 GITDJANGO_DIRNAME = './content'
+DISQUS_SHORTNAME = 'pythonvision'
 try:
     from local_settings import *
 except ImportError:
