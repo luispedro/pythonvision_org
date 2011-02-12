@@ -1,0 +1,11 @@
+title: Update
+slug: update
+timestamp: Feb 12 2011 17:38
+categories: pythonvision
+author: Luis Pedro Coelho <lpc@cmu.edu>
+---
+
+After a long hiatus, I've worked a bit on pythonvision again. In particular, I
+improved the blog and we now have disqus integration (which was surprisingly
+easy).
+
