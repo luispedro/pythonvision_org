@@ -1,0 +1,20 @@
+title: Mahotas 0.6.4
+slug: update mahotas
+timestamp: Apr 8 2011 15:35
+categories: pythonvision
+author: Luis Pedro Coelho <luis@luispedro.org>
+---
+
+I'm happy to announce a new version of mahotas, version 0.6.4.
+
+WHAT'S NEW
+----------
+
+Major change is that Mac OS compilation now works! Thanks to K-Michael
+Aye for the patch that saved the day.
+
+Minor changes include fixes to ``cwatershed`` and adding the tests to
+the source distribution (use `python setup.py test` to run them).
+
+Get it from `PyPI <http://pypi.python.org/pypi/mahotas/0.6.4>`__.
+
