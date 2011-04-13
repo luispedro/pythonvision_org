@@ -3,7 +3,13 @@ url: examples/classification
 categories: tutorials
 ..
 
-Here is an alternative solution, using mahotas and milk.
+Imagine you want to classify a collection of images into two groups. For
+simplicity, we can call one *positive* and the other *negative*. If these are,
+for example, scans of documents, they might be documents where there is text
+versus blank pages (this was the original motivation); or it might be something
+else entirely.
+
+Here is a possible solution, using mahotas and milk.
 
 1. Start by creating two directories: ``positives/`` and ``negatives/`` where
    you will manually pick out a few examples of positive and negative.
