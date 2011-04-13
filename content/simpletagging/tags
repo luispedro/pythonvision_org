@@ -10,4 +10,6 @@
 -
     name: Mahotas
     slug: mahotas
-
+-
+    name: Examples
+    slug: examples
