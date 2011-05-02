@@ -26,7 +26,7 @@ Blogs
 
 1. `DIP4FISH <http://dip4fish.blogspot.com>`_: Digital Image Processing for
    fluorescence in-situ hybridization and QFISH
-2. `Super Ivo http://superivo.wordpress.com/>`_: Shows some really nice
+2. `Super Ivo <http://superivo.wordpress.com/>`_: Shows some really nice
    examples of python computer vision, even if the blog also talks of other
    things.
 
