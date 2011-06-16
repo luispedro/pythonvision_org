@@ -29,6 +29,8 @@ Blogs
 2. `Super Ivo <http://superivo.wordpress.com/>`_: Shows some really nice
    examples of python computer vision, even if the blog also talks of other
    things.
+3. `Peekaboo <http://peekaboo-vision.blogspot.com/>`_: Andy's Computer Vision
+   and Machine Learning Blog
 
 
 Feel free to suggest links (by `email <mailto:luis@luispedro.org>`_) or by
