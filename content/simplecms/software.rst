@@ -31,6 +31,7 @@ Recommended Software
    the OpenCV library.
 4. `mahotas <http://luispedro.org/software/mahotas>`_: Several algorithms in
    fast C++
+5. `simpleCV <http://www.simplecv.org/>`__: Computer vision library.
 
 Other Software
 ..............

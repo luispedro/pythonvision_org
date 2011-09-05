@@ -19,6 +19,7 @@ See the `software page </software>`_ for more discussion:
    the OpenCV library.
 3. `mahotas <http://luispedro.org/software/mahotas>`_: Several algorithms in
    fast C++
+4. `simpleCV <http://www.simplecv.org/>`__: Computer Vision framework
 
 
 Blogs
