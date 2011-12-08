@@ -1,7 +1,7 @@
 title: Scikits.Image 0.4
 slug: update skimage
 timestamp: Dec 8 2011 16:38
-categories: pythonvision skimages
+categories: pythonvision skimage
 author: Luis Pedro Coelho <luis@luispedro.org>
 ---
 

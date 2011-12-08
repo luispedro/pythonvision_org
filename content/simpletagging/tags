@@ -11,5 +11,8 @@
     name: Mahotas
     slug: mahotas
 -
+    name: scikit-image
+    slug: skimage
+-
     name: Examples
     slug: examples
