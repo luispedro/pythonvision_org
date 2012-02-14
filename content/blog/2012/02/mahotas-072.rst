@@ -27,3 +27,5 @@ This is exactly the same as::
             ])
 
 but as a single function call.
+
+Get it `here <http://pypi.python.org/pypi/mahotas>`__.
