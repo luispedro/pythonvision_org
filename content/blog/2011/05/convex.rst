@@ -2,7 +2,7 @@ title: Computing the convex hull area of a 2D binary particle
 slug: computing-the-convex-hull-area-of-a-2d-binary-particle
 timestamp: May 3 2011 4:07
 categories: examples
-author: "Jean-Patrick Pommier" <jeanpatrick.pommier@gmail.com>
+author: Jean-Patrick Pommier <jeanpatrick.pommier@gmail.com>
 ---
 
 Crossposted from `DIP4FISH
@@ -27,8 +27,8 @@ it is possible to :
    :width: 66%
    :align: center
 
-    Blue curve:orientation curve for the original particle image (top left).
-    Green curve: orientation curve after high pass filtering (top right).
+   Blue curve:orientation curve for the original particle image (top left).
+   Green curve: orientation curve after high pass filtering (top right).
 
 With two features as the particle area and the ratio between the particle area
 and the convex hull area, it should be possible to start to classify the
