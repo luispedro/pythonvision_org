@@ -13,11 +13,14 @@ Essential Software
 
 1. Python. Use version 2.6 or 2.7, if you are new to python.
 2. ``numpy``
-3. ``scipy.ndimage``
 
 If you are using Linux, you should use the packages that come with your
-distribution. If you are using Mac OS or Windows, check out `Enthought's Python
-Distribution <http://www.enthought.com/products/epd.php>`_ as a good solution
+distribution.
+
+On Windows, use `WinPython <http://code.google.com/p/winpython/>`__
+
+If you are using Mac OS, check out `Enthought's Python Distribution
+<http://www.enthought.com/products/epd.php>`_ as a good solution
 if you are not very familiar with how to install Unix-style software. It
 includes all of the packages above.
 
