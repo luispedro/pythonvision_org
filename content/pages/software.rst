@@ -27,11 +27,10 @@ includes all of the packages above.
 Recommended Software
 ....................
 
-1. `ipython <http://ipython.scipy.org/moin/>`_
-2. `pymorph <http://luispedro.org/software/pymorph>`_: Basic (and not so basic)
+1. `ipython <http://ipython.scipy.org/moin/>`__
+2. `pymorph <http://luispedro.org/software/pymorph>`__: Basic (and not so basic)
    image morphological operators.
-3. `scikits.image <http://scikits.appspot.com/image>`_ Includes bindings for
-   the OpenCV library.
+3. `scikit-image <http://scikit-image.org>`__: A collection of algorithms in Python and Cython
 4. `mahotas <http://luispedro.org/software/mahotas>`_: Several algorithms in
    fast C++
 5. `simpleCV <http://www.simplecv.org/>`__: Computer vision library.
