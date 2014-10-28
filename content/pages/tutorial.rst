@@ -18,7 +18,7 @@ Introduction
 Basic Software
 ---------------
 
-I am going to assuyme that you have installed the following:
+I am going to assume that you have installed the following:
     - Python 2.5, 2.6, or 2.7 (avoid 3.0 or 3.1---too new)
     - numpy
     - scipy
@@ -110,7 +110,7 @@ It will probably look like:
     :target: /media/files/images/dna-coloured.jpeg
 
 This is because, by default, pylab shows images as a heatmap. You can see the
-more traditional grey-scale image by switching the colormap used. Instead of
+more traditional grey-scale image by switching the colourmap used. Instead of
 the default *jet* colourmap, we can set it to the *gray* one, which is the
 traditional greyscale representation:
 
@@ -450,7 +450,7 @@ Footnotes
 .. [#] Strictly speaking, this is not true. There is also the Python Imaging
        Library (PIL), which is not the same as numpy (in fact, you have to
        convert back and forth). For the kind of image processing that I will be
-       talking about, this does not matter as PIL is targetted towards other
+       talking about, this does not matter as PIL is targeted towards other
        types of image manipulation.
 
 .. [#] This is so useful that, if you are familiar with the shell, you might
@@ -460,7 +460,7 @@ Footnotes
 
 .. [#] For the curious, I contrast stretched the image for this tutorial.
 
-.. [#] If you are not too familiar with Python, you might not be confortable
+.. [#] If you are not too familiar with Python, you might not be comfortable
        with the *dna // 2* notation. While 4 divided by 2 is obviously 2, it is
        not always clear what 3 divided by 2 should be. The *integer division*
        answer is that it's 1 (with remainder 1), while the *floating-point
