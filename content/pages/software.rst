@@ -17,7 +17,9 @@ Essential Software
 If you are using Linux, you should use the packages that come with your
 distribution.
 
-On Windows, use `WinPython <http://code.google.com/p/winpython/>`__
+On Windows, use `WinPython <https://winpython.github.io/>`__, a portable
+Python distribution including a long list of packages from the scientific
+community. It runs out of the box, and does not need an installation.
 
 If you are using Mac OS, check out `Enthought's Python Distribution
 <http://www.enthought.com/products/epd.php>`_ as a good solution
