@@ -1,2 +1,2 @@
-*.pyc
-pythonvision.db
+_site
+.sass-cache
