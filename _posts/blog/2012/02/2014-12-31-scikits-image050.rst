@@ -1,8 +1,8 @@
-title: Scikits-Image 0.5
-slug: skimage-05
-timestamp: Feb 27 2012 11:27
-categories: pythonvision skimage
+---
+date: Feb 27 2012 11:27
 author: Skimage contributors
+categories: pythonvision skimage
+title: Scikits-Image 0.5
 ---
 
 Announcement: scikits-image 0.5

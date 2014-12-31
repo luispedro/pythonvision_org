@@ -1,8 +1,8 @@
-title: First Post
-slug: first-post
-timestamp: April 6 2010 19:18
-categories: pythonvision
+---
+date: April 6 2010 19:18
 author: Luis Pedro Coelho <lpc@cmu.edu>
+categories: pythonvision
+title: First Post
 ---
 
 Python vision has been progressing nicely over the past few days as I have used

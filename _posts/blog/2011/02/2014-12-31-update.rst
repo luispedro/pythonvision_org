@@ -1,8 +1,8 @@
-title: Update
-slug: update
-timestamp: Feb 12 2011 17:38
-categories: pythonvision
+---
+date: Feb 12 2011 17:38
 author: Luis Pedro Coelho <lpc@cmu.edu>
+categories: pythonvision
+title: Update
 ---
 
 After a long hiatus, I've worked a bit on pythonvision again. In particular, I

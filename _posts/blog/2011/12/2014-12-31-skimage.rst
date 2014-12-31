@@ -1,8 +1,8 @@
-title: Scikits.Image 0.4
-slug: skimage04
-timestamp: Dec 8 2011 16:38
-categories: pythonvision skimage
+---
+date: Dec 8 2011 16:38
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: pythonvision skimage
+title: Scikits.Image 0.4
 ---
 
 Announcement: scikits-image 0.4

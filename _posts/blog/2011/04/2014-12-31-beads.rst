@@ -1,8 +1,8 @@
-title: Looking for Beads
-slug: looking-for-beads
-timestamp: Apr 12 2011 23:50
-categories: examples
+---
+date: Apr 12 2011 23:50
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: examples
+title: Looking for Beads
 ---
 
 Recently, in the `pythonvision mailing list

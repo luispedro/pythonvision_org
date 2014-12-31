@@ -1,8 +1,8 @@
-title: Mahotas 0.6.4
-slug: update mahotas
-timestamp: Apr 8 2011 15:35
-categories: pythonvision
+---
+date: Apr 8 2011 15:35
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: pythonvision
+title: Mahotas 0.6.4
 ---
 
 I'm happy to announce a new version of mahotas, version 0.6.4.

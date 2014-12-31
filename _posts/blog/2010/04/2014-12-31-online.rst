@@ -1,8 +1,8 @@
-title: Online
-slug: online
-timestamp: April 18 2010 21:21
-categories: pythonvision
+---
+date: April 18 2010 21:21
 author: Luis Pedro Coelho <lpc@cmu.edu>
+categories: pythonvision
+title: Online
 ---
 
 The website is online!

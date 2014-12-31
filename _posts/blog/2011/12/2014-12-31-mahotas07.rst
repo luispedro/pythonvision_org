@@ -1,8 +1,8 @@
-title: Mahotas 0.7
-slug: update mahotas
-timestamp: Dec 6 2011 18:30
-categories: pythonvision mahotas
+---
+date: Dec 6 2011 18:30
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: pythonvision mahotas
+title: Mahotas 0.7
 ---
 
 I'm happy to announce a new version of mahotas, version 0.7!

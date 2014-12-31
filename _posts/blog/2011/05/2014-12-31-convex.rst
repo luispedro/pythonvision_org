@@ -1,8 +1,8 @@
-title: Computing the convex hull area of a 2D binary particle
-slug: computing-the-convex-hull-area-of-a-2d-binary-particle
-timestamp: May 3 2011 4:07
-categories: examples
+---
+date: May 3 2011 4:07
 author: Jean-Patrick Pommier <jeanpatrick.pommier@gmail.com>
+categories: examples
+title: Computing the convex hull area of a 2D binary particle
 ---
 
 Crossposted from `DIP4FISH

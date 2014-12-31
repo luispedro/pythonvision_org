@@ -1,8 +1,8 @@
-title: Mahotas 0.7.2
-slug: mahotas-072
-timestamp: Feb 14 2012 12:14
-categories: pythonvision mahotas
+---
+date: Feb 14 2012 12:14
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: pythonvision mahotas
+title: Mahotas 0.7.2
 ---
 
 I am pleased to announce a new version of mahotas, my computer vision package 

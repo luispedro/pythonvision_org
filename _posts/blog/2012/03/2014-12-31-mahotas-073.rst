@@ -1,8 +1,8 @@
-title: Mahotas 0.7.3
-slug: mahotas-073
-timestamp: March 15 2012 14:19
-categories: pythonvision mahotas
+---
+date: March 15 2012 14:19
 author: Luis Pedro Coelho <luis@luispedro.org>
+categories: pythonvision mahotas
+title: Mahotas 0.7.3
 ---
 
 I am pleased to announce a new version of mahotas, my computer vision package 
