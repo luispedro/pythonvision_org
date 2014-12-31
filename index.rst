@@ -1,7 +1,5 @@
 ---
 title: Pythonvision.org
-permalink: None
-categories: None
 ---
 
 =============
