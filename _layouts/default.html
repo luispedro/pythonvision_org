@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
+{% include head.html %}
+<body>
 
-  {% include head.html %}
+{% include header.html %}
+<div id="content-wrap" class="clear">
+    <div id="content">
+        <div id="main">
+            {{ content }}
+            <div class="clear"></div>
+        </div>
 
-  <body>
+        <div id="sidebar">
+            <div class="sidemenu">
+                {% include sidebar.html %}
+            </div>
 
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+            <div class="sidemenu">
+                <h3>Mailing List</h3>
+                {% include promotion.html %}
+            </div>
+        </div>
     </div>
+</div>
+{% include footer.html %}
 
-    {% include footer.html %}
-
-  </body>
+</body>
 
 </html>
