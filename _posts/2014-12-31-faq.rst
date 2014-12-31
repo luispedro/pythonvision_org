@@ -1,3 +1,10 @@
+---
+title: Frequently Asked Questions
+author: Luis Pedro Coelho <lpc@cmu.edu>
+permalink: faq
+categories: pythonvision
+---
+
 ==========================
 Frequently Asked Questions
 ==========================

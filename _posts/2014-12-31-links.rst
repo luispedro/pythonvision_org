@@ -1,7 +1,8 @@
+---
 title: Links
-url: links
-categories: pythonvision
 author: Luis Pedro Coelho <lpc@cmu.edu>
+permalink: links
+categories: pythonvision
 ---
 
 =====

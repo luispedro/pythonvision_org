@@ -1,7 +1,8 @@
+---
 title: Ideas
-url: contribute/ideas
-categories: pythonvision
 author: Luis Pedro Coelho <lpc@cmu.edu>
+permalink: contribute/ideas
+categories: pythonvision
 ---
 
 =====

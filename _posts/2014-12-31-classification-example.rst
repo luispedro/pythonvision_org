@@ -1,7 +1,8 @@
+---
 title: Classification example
-url: examples/classification
+permalink: examples/classification
 categories: tutorials
-..
+---
 
 Imagine you want to classify a collection of images into two groups. For
 simplicity, we can call one *positive* and the other *negative*. If these are,

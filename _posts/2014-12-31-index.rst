@@ -1,7 +1,8 @@
+---
 title: Pythonvision.org
-url:
-categories:
-..
+permalink: None
+categories: None
+---
 
 =============
 Python Vision

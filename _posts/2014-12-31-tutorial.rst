@@ -1,7 +1,8 @@
+---
 title: Tutorial
-url: basic-tutorial
+permalink: basic-tutorial
 categories: tutorials
-..
+---
 
 =======================
 Python Image Tutorial

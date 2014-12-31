@@ -1,8 +1,9 @@
+---
 title: Software
-url: software
-categories: software
 author: Luis Pedro Coelho <lpc@cmu.edu>
-..
+permalink: software
+categories: software
+---
 
 ========
 Software

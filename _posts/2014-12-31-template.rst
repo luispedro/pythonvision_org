@@ -1,8 +1,9 @@
+---
 title: <+TITLE+>
-url: <+URL+>
-categories: <+CATEGORIES+>
 author: <+AUTHOR+>
-..
+permalink: <+URL+>
+categories: <+CATEGORIES+>
+---
 
 =========
 <+TITLE+>
