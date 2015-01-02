@@ -1,4 +1,5 @@
 ---
+layout: post
 date: April 6 2010 19:18
 author: Luis Pedro Coelho <lpc@cmu.edu>
 categories: pythonvision

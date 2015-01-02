@@ -1,4 +1,5 @@
 ---
+layout: post
 date: Feb 14 2012 12:14
 author: Luis Pedro Coelho <luis@luispedro.org>
 categories: pythonvision mahotas

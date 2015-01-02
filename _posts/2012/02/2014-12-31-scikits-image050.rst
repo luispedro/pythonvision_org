@@ -1,4 +1,5 @@
 ---
+layout: post
 date: Feb 27 2012 11:27
 author: Skimage contributors
 categories: pythonvision skimage

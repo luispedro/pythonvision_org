@@ -1,4 +1,5 @@
 ---
+layout: post
 date: May 3 2011 4:07
 author: Jean-Patrick Pommier <jeanpatrick.pommier@gmail.com>
 categories: examples

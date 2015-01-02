@@ -1,4 +1,5 @@
 ---
+layout: post
 date: Apr 12 2011 23:50
 author: Luis Pedro Coelho <luis@luispedro.org>
 categories: examples

@@ -1,7 +1,7 @@
 ---
 title: Frequently Asked Questions
 author: Luis Pedro Coelho <lpc@cmu.edu>
-permalink: faq
+permalink: faq.html
 categories: pythonvision
 ---
 

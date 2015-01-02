@@ -1,7 +1,7 @@
 ---
 title: Software
 author: Luis Pedro Coelho <lpc@cmu.edu>
-permalink: software
+permalink: software/
 categories: software
 ---
 
