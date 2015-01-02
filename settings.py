@@ -10,9 +10,9 @@ ADMINS = (
 APPEND_SLASH = True
 MANAGERS = ADMINS
 DATABASES = {
-    'default' : {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': _BASE_DIR + '/pythonvision.db',
+        'NAME':  _BASE_DIR + '/pythonvision.db',
     }
 }
 
@@ -50,12 +50,6 @@ ADMIN_MEDIA_PREFIX = '/admin-media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'js-ep$t(8js4lekq=p)hi@x7sh8_$ogpkl53qeg6p2$@a%qzx@'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
-    'django.template.loaders.eggs.load_template_source',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
