@@ -82,8 +82,6 @@ code {
   	margin: 3px 0;
   	padding: 20px;
   	text-align: left;
-  	display: block;
-  	overflow: auto;
   	font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
   	/* white-space: pre; */
   	border: 1px solid #F0F0F0;

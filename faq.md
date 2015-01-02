@@ -5,14 +5,11 @@ permalink: faq.html
 categories: pythonvision
 ---
 
-==========================
-Frequently Asked Questions
-==========================
+# Frequently Asked Questions
 
-How does ``label()`` work?
---------------------------
+## How does `label()` work?
 
-We could be talking about ``ndimage.label()`` or some other implementation. In
+We could be talking about `ndimage.label()` or some other implementation. In
 general, though, these functions take a binary image and return a labeled
 image. That is, they will return an integer image where the first region will
 have pixel value 1, the second region will have pixel value 2, ....

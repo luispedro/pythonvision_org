@@ -5,9 +5,7 @@ permalink: contribute/ideas
 categories: pythonvision
 ---
 
-=====
-Ideas
-=====
+# Ideas
 
 Here are some ideas for contribution:
 
