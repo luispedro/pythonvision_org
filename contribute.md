@@ -1,7 +1,7 @@
 ---
 title: Contribute
 author: Luis Pedro Coelho <lpc@cmu.edu>
-permalink: contribute.html
+permalink: contribute/
 categories: pythonvision
 ---
 

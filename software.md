@@ -1,7 +1,7 @@
 ---
 title: Software
 author: Luis Pedro Coelho <lpc@cmu.edu>
-permalink: software.html
+permalink: software/
 categories: software
 ---
 
@@ -46,5 +46,5 @@ separate.
 ### Anything Missing?
 
 If you find any important piece of software missing from this list, you can
-[contribute](contribute.html) to this page.
+[contribute](/contribute/) to this page.
 

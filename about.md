@@ -1,14 +1,14 @@
 ---
 title: About Pythonvision.org
 author: Luis Pedro Coelho <lpc@cmu.edu>
-permalink: about.html
+permalink: about/
 categories: pythonvision
 ---
 
 # About Pythonvision.org
 
 [Pythonvision.org](http://pythonvision.org) started out as a
-[tutorial](tutorial.html), then it grew as I realised that there were several
+[tutorial](basic-tutorial), then it grew as I realised that there were several
 researchers using Python for computer vision, but the efforts were scattered
 across projects, forums, mailing-lists.
 
