@@ -8,7 +8,7 @@ This is an open project
 -----------------------
 
 You can help edit this site too. Tutorials, thoughts, contributions are
-[welcome](/contribute).
+[welcome](contribute).
 
 About pythonvision.org
 ----------------------
