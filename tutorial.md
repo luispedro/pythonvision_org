@@ -16,7 +16,7 @@ Introduction
 
 ### Basic Software
 
-I am going to assuyme that you have installed the following:
+I am going to assume that you have installed the following:
 :   -   Python 2.5, 2.6, or 2.7 (avoid 3.0 or 3.1—too new)
     -   numpy
     -   scipy
@@ -366,7 +366,7 @@ Footnotes
     Imaging Library (PIL), which is not the same as numpy (in fact, you
     have to convert back and forth). For the kind of image processing
     that I will be talking about, this does not matter as PIL is
-    targetted towards other types of image manipulation.
+    targeted towards other types of image manipulation.
 
 [^2]: This is so useful that, if you are familiar with the shell, you
     might consider setting up an alias *pylab=ipython -pylab*. The pylab
@@ -376,7 +376,7 @@ Footnotes
 [^3]: For the curious, I contrast stretched the image for this tutorial.
 
 [^4]: If you are not too familiar with Python, you might not be
-    confortable with the *dna // 2* notation. While 4 divided by 2 is
+    comfortable with the *dna // 2* notation. While 4 divided by 2 is
     obviously 2, it is not always clear what 3 divided by 2 should be.
     The *integer division* answer is that it’s 1 (with remainder 1),
     while the *floating-point division* answer is that it is 1.5. In

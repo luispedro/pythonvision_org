@@ -13,6 +13,10 @@ categories: software
 2. `numpy`
 3. `scipy.ndimage`
 
+On Windows, use [WinPython](https://winpython.github.io/), a portable Python
+distribution including a long list of packages from the scientific community.
+It runs out of the box, and does not need an installation.
+
 If you are using Linux, you should use the packages that come with your
 distribution. If you are using Mac OS or Windows, check out [Enthought\'s
 Python Distribution](http://www.enthought.com/products/epd.php) as a good
