@@ -1,6 +1,6 @@
 ---
 title: About Pythonvision.org
-author: Luis Pedro Coelho <lpc@cmu.edu>
+author: Luis Pedro Coelho <luis@luispedro.org>
 permalink: about/
 categories: pythonvision
 ---

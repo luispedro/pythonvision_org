@@ -1,6 +1,6 @@
 ---
 title: Ideas
-author: Luis Pedro Coelho <lpc@cmu.edu>
+author: Luis Pedro Coelho <luis@luispedro.org>
 permalink: contribute/ideas
 categories: pythonvision
 ---
