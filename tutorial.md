@@ -20,24 +20,16 @@ I am going to assume that you have installed the following:
 :   -   Python 2.5, 2.6, or 2.7 (avoid 3.0 or 3.1—too new)
     -   numpy
     -   matplotlib
+    -   mahotas
     -   ipython
 
 Under Linux, you can just install your distribution’s packages (install at
 least python-numpy, python-numpy-dev, python-matplotlib, ipython). Under
 Windows or Mac OS, this is more complicated. Fortunately, some people have done
-the work for us and built packages that have this. Install either Python xy or
-the Enthought Python Distribution (actually this works on Linux too, if you
-prefer this method).
+the work for us and built packages that have this. Install either Python(xy) or
+the [Anaconda Distribution](http://continuum.io/downloads) (actually this works
+on Linux too, if you prefer this method).
 
-### Other Software
-
-You should also download and install:
-    -   mahotas
-
-The first package contains morphological code. It was written by Roberto A.
-Lotufo and Rubens C. Machado but is now maintained by me. The second package
-contains a fairly random assortment of image processing tools and was written
-by me. You can download both from [PyPI](http://pypi.python.org/).
 
 First Task: Counting Nuclei
 ---------------------------
