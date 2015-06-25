@@ -46,7 +46,7 @@ the example:
     import numpy as np
     import pylab
     import mahotas as mh
-
+    %pylab
 
 These are the packages listed above (except *pylab*, which is a part of
 matplotlib).
